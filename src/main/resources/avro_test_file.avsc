@@ -1,0 +1,31 @@
+{
+   "type": "record",
+   "name": "EmployeeAvro",
+   "namespace": "com.project.emsa.entity",
+   "fields": [
+      {
+         "name": "id",
+         "type": "int"
+      },
+      {
+         "name": "firstName",
+         "type": "string"
+      },
+      {
+         "name": "lastName",
+         "type": [
+            "null",
+            "string"
+         ],
+         "default": null
+      },
+      {
+         "name": "email",
+         "type": [
+            "null",
+            "string"
+         ],
+         "default": null
+      }
+   ]
+}

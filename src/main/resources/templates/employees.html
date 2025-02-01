@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+	<meta charset="ISO-8859-1">
+	<title>Employee Avro Management System</title>
+	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.4.1/dist/css/bootstrap.min.css"
+		integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+</head>
+
+<body>
+	<nav class="navbar navbar-expand-md bg-dark navbar-dark">
+		<!-- Brand -->
+		<a class="navbar-brand" href="#">Employee Avro Management System</a>
+
+		<!-- Toggler/collapsibe Button -->
+		<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
+			<span class="navbar-toggler-icon"></span>
+		</button>
+
+		<!-- Navbar links -->
+		<div class="collapse navbar-collapse" id="collapsibleNavbar">
+			<ul class="navbar-nav">
+				<li class="nav-item">
+					<a class="nav-link" th:href="@{/employees}">Employee Management</a>
+				</li>
+			</ul>
+		</div>
+	</nav>
+	<br>
+	<br>
+	<div class="container">
+		<div class="row">
+			<h1> List Of Employees </h1>
+		</div>
+
+		<div class="row">
+			<div class="col-lg-3">
+				<!-- syntax if anker tab to provide link for thymenleaf attribute-->
+				<a th:href="@{/employees/new}" class="btn btn-primary btn-sm mb-3"> Add Employee </a>
+			</div>
+
+		</div>
+		<table class="table table-striped table-bordered">
+			<thead class="table-dark">
+				<tr>
+					<th> Employee Id </th>
+					<th> Employee First Name </th>
+					<th> Employee Last Name </th>
+					<th> Employee Email </th>
+					<th> Actions </th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr th:each="employeeAvro: ${employees}">
+					<td th:text="${employeeAvro.id}"></td>
+					<td th:text="${employeeAvro.firstName}"></td>
+					<td th:text="${employeeAvro.lastName}"></td>
+					<td th:text="${employeeAvro.email}"></td>
+					<td>
+						<a th:href="@{/employees/edit/{id}(id=${employeeAvro.id})}" class="btn btn-primary"> Update </a>
+
+						<a th:href="@{/employees/{id}(id=${employeeAvro.id})}" class="btn btn-danger"> Delete </a>
+					</td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+</body>
+
+</html>
